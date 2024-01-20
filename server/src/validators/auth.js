@@ -1,5 +1,6 @@
-const {check} = require('express-validator');
+const {check, oneOf} = require('express-validator');
 const pool = require('../db')
+const {compare} = require('bcryptjs')
 
 // Check if user_name exists
 const usernameExists = check('user_name').isLength({min: 5}).withMessage('needs to be atleast 5 characters').custom(async (value) => {
@@ -25,8 +26,23 @@ const emailExists = check('user_email').custom(async (value) => {
 })
 
 //Login validation
-const loginCheck = check('email')
+const loginCheck = check('user_name').custom(async (value, {req}) => {
+    const userName = await pool.query('SELECT * FROM users WHERE user_name = $1', [value])
+    
+    if(!userName.rows.length) {
+        throw new Error('Username does not exist')
+    }
+
+    const validPassword = await compare(req.body.user_password, userName.rows[0].user_password)
+
+    if(!validPassword){
+        throw new Error('Wrong Password')
+    }
+    req.user = userName.rows[0]
+
+})
 
 module.exports = {
-    registerValidation: [usernameExists, email, password, emailExists]
+    registerValidation: [usernameExists, email, password, emailExists],
+    loginValidation: [loginCheck]
 }
