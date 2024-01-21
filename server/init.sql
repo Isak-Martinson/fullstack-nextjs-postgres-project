@@ -6,7 +6,8 @@ CREATE TABLE "users" (
   "user_display_name" VARCHAR(100),
   "user_about_text" VARCHAR(500),
   "user_is_member" BOOLEAN,
-  "user_is_admin" BOOLEAN
+  "user_is_admin" BOOLEAN,
+  "user_date" DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE "posts" (
@@ -14,6 +15,7 @@ CREATE TABLE "posts" (
   "user_id" INT,
   "post_title" VARCHAR(300),
   "post_text" TEXT,
+  "post_views" INT,
   "post_date" DATE DEFAULT CURRENT_DATE,
   PRIMARY KEY ("post_id"),
   CONSTRAINT "FK_posts.user_id"

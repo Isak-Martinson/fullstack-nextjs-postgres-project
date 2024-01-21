@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
   try {
     const hashedPassword = await hash(password, 10)
 
-    await pool.query('INSERT INTO users (user_name, user_email, user_password) values($1, $2, $3)', [username, email, hashedPassword])
+    await pool.query('INSERT INTO users (user_name, user_email, user_password, user_is_member, user_is_admin) values($1, $2, $3, $4, $5)', [username, email, hashedPassword, false, false])
 
     return res.status(201).json({
       success: true,
