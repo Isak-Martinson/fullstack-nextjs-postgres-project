@@ -3,12 +3,22 @@ const LoginComponent = () => {
     <section>
       <form action='submit'>
         <label htmlFor=''>
-          <input type='text' />
+          <input
+            id='username'
+            type='text'
+            placeholder='Användarnamn'
+            required
+          />
         </label>
-        <label htmlFor=''>
-          <input type='password' />
+        <label htmlFor='password'>
+          <input
+            id='password'
+            type='password'
+            placeholder='Lösenord'
+            required
+          />
         </label>
-        <button>log in</button>
+        <button>Logga in</button>
       </form>
     </section>
   );

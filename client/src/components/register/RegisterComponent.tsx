@@ -1,8 +1,12 @@
-'use client';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import axios from 'axios';
 
 const RegisterComponent = () => {
+  const [errors, setErrors] = useState<any[]>([]);
+  const [success, setSuccess] = useState({
+    success: false,
+    message: '',
+  });
   const [data, setData] = useState({
     user_name: '',
     user_email: '',
@@ -19,36 +23,67 @@ const RegisterComponent = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await axios.post('/api/RegisterUser', {
-      method: 'POST',
-      body: data,
-    });
+    try {
+      const response = await axios.post('/api/RegisterUser', {
+        method: 'POST',
+        body: data,
+      });
+      if (response.data.success === true) {
+        setSuccess({
+          ...success,
+          success: true,
+          message: response.data.message,
+        });
+      } else {
+        setErrors(response.data.errors);
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   return (
     <section>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <label htmlFor='user_name'>Användarnamn</label>
-        <input
-          id='user_name'
-          type='text'
-          autoComplete='off'
-          onChange={handleChange}
-        />
-        <label htmlFor='user_email'>Email</label>
-        <input
-          id='user_email'
-          type='email'
-          autoComplete='off'
-          onChange={handleChange}
-        />
-        <label htmlFor='user_password'>Lösenord</label>
-        <input id='user_password' type='password' onChange={handleChange} />
-        <button>Skapa Konto</button>
-      </form>
+      {!success.success ? (
+        <div>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <label htmlFor='user_name'>Användarnamn</label>
+            <input
+              id='user_name'
+              type='text'
+              autoComplete='off'
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='user_email'>Email</label>
+            <input
+              id='user_email'
+              type='email'
+              autoComplete='off'
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='user_password'>Lösenord</label>
+            <input
+              id='user_password'
+              type='password'
+              onChange={handleChange}
+              required
+            />
+            <button>Skapa Konto</button>
+          </form>
+          <div>
+            {errors.map((error, index) => (
+              <p key={index}>{error.msg}</p>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <p>{success.message} 🎉</p>
+      )}
     </section>
   );
 };
