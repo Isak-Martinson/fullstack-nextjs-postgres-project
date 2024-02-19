@@ -15,7 +15,7 @@ const PostsComponent = () => {
   useEffect(() => {
     console.log('fetching data');
     axios
-      .get('/api/FetchPosts')
+      .get('http://localhost:9000/api/get-posts')
       .then((res) => res.data)
       .then((data) => setPosts(data));
   }, []);

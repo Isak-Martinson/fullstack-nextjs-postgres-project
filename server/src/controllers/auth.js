@@ -28,7 +28,9 @@ exports.register = async (req, res) => {
   } catch (error) {
     console.log(error.message)
     return res.status(500).json({
-      error: error.message
+      sucess: false,
+      error: error.message,
+      message: 'problem when trying to register user'
     })
   }
 }
@@ -43,12 +45,20 @@ exports.login = async(req, res) => {
   }
   try {
     const token = sign(payload, SECRET)
-    return res.status(200).cookie('token', token, {httpOnly: true}).json({
+
+    console.log('Response Headers: ', res.getHeaders())
+
+    return res
+    .status(200)
+    .header('Content-Type', 'application/json;charset=UTF-8')
+    .cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true})
+    .json({
       success: true,
       message: 'Logged in successfully.'
     })
   } catch (error) {
     console.log('error', error.message)
+    return res.status(500).json({success: false, message: 'Internal server error'})
   }
 }
 

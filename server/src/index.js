@@ -9,7 +9,14 @@ const passport = require('passport')
 require('./middleware/passport-middleware')
 
 // Initialize middleware
+app.use(cors({origin: CLIENT_URL, credentials: true}))
 app.use(express.json())
+app.use((req, res, next) => {
+    console.log('Request Protocol:', req.protocol);
+    console.log('Request Headers:', req.headers);
+    res.setHeader('Content-Type', 'application/json;charset=UTF-8');
+    next();
+  });
 app.use(cookieParser())
 app.use(passport.initialize())
 
@@ -18,8 +25,6 @@ const authRoutes = require('./routes/auth')
 
 // initialize routes
 app.use('/api', authRoutes)
-
-app.use(cors({origin: CLIENT_URL, credentials: true}))
 
 app.listen(PORT, () => {
     console.log(`Server listening on the port  ${PORT}`);

@@ -1,4 +1,4 @@
-const {check, oneOf} = require('express-validator');
+const {check} = require('express-validator');
 const pool = require('../db')
 const {compare} = require('bcryptjs')
 

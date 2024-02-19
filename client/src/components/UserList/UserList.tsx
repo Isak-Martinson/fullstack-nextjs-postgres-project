@@ -14,7 +14,7 @@ const UserList = () => {
   useEffect(() => {
     console.log('fetching data');
     axios
-      .get('/api/FetchUsers')
+      .get('http://localhost:9000/api/get-users')
       .then((res) => res.data)
       .then((data) => setUsers(data));
   }, []);

@@ -24,10 +24,10 @@ const RegisterComponent = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/RegisterUser', {
-        method: 'POST',
-        body: data,
-      });
+      const response = await axios.post(
+        'http://localhost:9000/api/register',
+        data
+      );
       if (response.data.success === true) {
         setSuccess({
           ...success,
