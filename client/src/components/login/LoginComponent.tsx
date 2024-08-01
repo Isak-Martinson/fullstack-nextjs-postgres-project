@@ -37,7 +37,9 @@ const LoginComponent = () => {
         }
       );
       if (response.data.success === true) {
-        console.log('du är nu inloggad', response.data, response.headers);
+        console.log('du är nu inloggad');
+        localStorage.setItem('isAuth', 'true');
+        console.log(response.data);
       } else {
         setError({
           ...error,

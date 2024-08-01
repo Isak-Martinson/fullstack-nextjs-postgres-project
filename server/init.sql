@@ -51,9 +51,11 @@ CREATE TABLE "bookmarks" (
       REFERENCES "users"("user_id")
 );
 
--- INSERT INTO users (user_id, user_name, user_password, user_email, user_display_name, user_about_text, user_is_member, user_is_admin) VALUES (1, 'admin', 'password', 'admin@test.com', 'admin-user', 'write some text about you here', true, true);
+INSERT INTO users (user_name, user_password, user_email, user_display_name, user_about_text, user_is_member, user_is_admin) VALUES ('admin', 'password', 'admin@test.com', 'admin-user', 'write some text about you here', true, true);
 -- INSERT INTO users (user_id, user_name, user_password, user_email, user_display_name, user_about_text, user_is_member, user_is_admin) VALUES (2, 'member', 'password', 'member@test.com', 'member user', 'write some text about you here', true, false);
 -- INSERT INTO users (user_id, user_name, user_password, user_email, user_display_name, user_about_text, user_is_member, user_is_admin) VALUES (3, 'regular-user', 'password', 'regular@test.com', 'regular user', 'write some text about you here', false, false);
 -- INSERT INTO posts (post_id, user_id, post_title, post_text, post_date) VALUES (1, 1, 'test title', 'lorem ipsum dolor sit amet', '2024-01-10');
 -- INSERT INTO comments (comment_id, post_id, user_id, comment_text, comment_date) VALUES (1, 1, 3, 'that is fire!!!', '2024-01-11');
+
+INSERT INTO posts (user_id, post_title, post_text, post_date) VALUES (1, 'test title 2', 'lorem ipsum dolor sit amet, bla bla bla', '2024-01-12');
 

@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
   } catch (error) {
     console.log(error.message)
     return res.status(500).json({
-      sucess: false,
+      success: false,
       error: error.message,
       message: 'problem when trying to register user'
     })

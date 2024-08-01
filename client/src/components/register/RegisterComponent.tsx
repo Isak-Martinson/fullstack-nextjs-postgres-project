@@ -38,7 +38,9 @@ const RegisterComponent = () => {
         setErrors(response.data.errors);
       }
     } catch (error: any) {
-      console.log(error);
+      console.log('error: ', error, 'errors: ', errors);
+      console.log('error 2: ', error.response.data.errors);
+      setErrors(error.response.data.errors);
     }
   };
 

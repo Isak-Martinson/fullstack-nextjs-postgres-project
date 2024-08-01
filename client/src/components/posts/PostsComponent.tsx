@@ -1,28 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { PostsProps, UserListProps } from '@/app/types';
 
-interface Test {
-  post_id: Number;
-  user_id: Number;
-  post_title: String;
-  post_text: String;
-  post_date: String;
+interface PostsComponentProps {
+  postsData: PostsProps[];
+  // userData: UserListProps[];
 }
 
-const PostsComponent = () => {
-  const [posts, setPosts] = useState<Array<Test>>([]);
-
-  useEffect(() => {
-    console.log('fetching data');
-    axios
-      .get('http://localhost:9000/api/get-posts')
-      .then((res) => res.data)
-      .then((data) => setPosts(data));
-  }, []);
-
+const PostsComponent: React.FC<PostsComponentProps> = ({ postsData }) => {
   return (
     <section>
-      {posts.map((post) => (
+      {postsData.map((post) => (
         <div key={null}>
           <h2>{post.post_title}</h2>
           <p>{post.post_text}</p>

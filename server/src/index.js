@@ -22,9 +22,11 @@ app.use(passport.initialize())
 
 // import routes
 const authRoutes = require('./routes/auth')
+const postsRoutes = require('./routes/posts')
 
 // initialize routes
 app.use('/api', authRoutes)
+app.use('/api', postsRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server listening on the port  ${PORT}`);

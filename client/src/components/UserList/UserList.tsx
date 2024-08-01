@@ -1,28 +1,17 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { UserListProps } from '@/app/types';
 
-interface UserListProps {
-  user_id: Number;
-  user_name: String;
-  user_email: String;
-  user_is_member: Boolean;
+interface UserListComponentProps {
+  users: UserListProps[];
 }
 
-const UserList = () => {
-  const [users, setUsers] = useState<Array<UserListProps>>([]);
-
-  useEffect(() => {
-    console.log('fetching data');
-    axios
-      .get('http://localhost:9000/api/get-users')
-      .then((res) => res.data)
-      .then((data) => setUsers(data));
-  }, []);
-
+const UserList: React.FC<UserListComponentProps> = ({ users }) => {
   return (
     <section>
       {users.map((user, index) => (
         <ul key={index}>
+          <li>{user.user_id}</li>
           <li>{user.user_name}</li>
           <li>{user.user_email}</li>
           <li>{user.user_is_member ? 'true' : 'false'}</li>
