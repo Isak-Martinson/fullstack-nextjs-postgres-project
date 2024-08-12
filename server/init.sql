@@ -11,25 +11,23 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "posts" (
-  "post_id" INT NOT NULL,
-  "user_id" INT,
+  "post_id" SERIAL PRIMARY KEY,
+  "user_id" INT NOT NULL,
   "post_title" VARCHAR(300),
   "post_text" TEXT,
   "post_views" INT,
   "post_date" DATE DEFAULT CURRENT_DATE,
-  PRIMARY KEY ("post_id"),
   CONSTRAINT "FK_posts.user_id"
     FOREIGN KEY ("user_id")
       REFERENCES "users"("user_id")
 );
 
 CREATE TABLE "comments" (
-  "comment_id" INT NOT NULL,
+  "comment_id" SERIAL PRIMARY KEY,
   "post_id" INT NOT NULL,
   "user_id" INT NOT NULL,
   "comment_text" TEXT NOT NULL,
   "comment_date" DATE DEFAULT CURRENT_DATE,
-  PRIMARY KEY ("comment_id"),
   CONSTRAINT "FK_comments.post_id"
     FOREIGN KEY ("post_id")
       REFERENCES "posts"("post_id"),
@@ -39,10 +37,9 @@ CREATE TABLE "comments" (
 );
 
 CREATE TABLE "bookmarks" (
-  "bookmark_id" INT NOT NULL,
+  "bookmark_id" SERIAL PRIMARY KEY,
   "user_id" INT NOT NULL,
   "post_id" INT NOT NULL,
-  PRIMARY KEY ("bookmark_id"),
   CONSTRAINT "FK_bookmarks.post_id"
     FOREIGN KEY ("post_id")
       REFERENCES "posts"("post_id"),

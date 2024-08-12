@@ -41,7 +41,8 @@ exports.login = async(req, res) => {
     id: user.user_id,
     username: user.user_name,
     email: user.user_email,
-    member: user.user_is_member
+    member: user.user_is_member,
+    admin: user.user_is_admin
   }
   try {
     const token = sign(payload, SECRET)
@@ -54,7 +55,7 @@ exports.login = async(req, res) => {
     .cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true})
     .json({
       success: true,
-      message: 'Logged in successfully.'
+      message: 'Logged in successfully.',
     })
   } catch (error) {
     console.log('error', error.message)

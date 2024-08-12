@@ -1,12 +1,17 @@
 'use client';
 import axios from 'axios';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 
 const CreatePost = () => {
   const [data, setData] = useState({
     post_title: '',
     post_text: '',
   });
+
+  useEffect(() => {
+    let x = document.cookie;
+    console.log('testing testing osv', x);
+  }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -18,10 +23,12 @@ const CreatePost = () => {
 
   const handleSubmit = async (submitFormEvent: FormEvent) => {
     submitFormEvent.preventDefault();
+    console.log('send this data', data);
     try {
       const response = await axios.post(
         'http://localhost:9000/api/create-post',
-        data
+        data,
+        { withCredentials: true }
       );
       if (response) {
         console.log('gick igenom');
