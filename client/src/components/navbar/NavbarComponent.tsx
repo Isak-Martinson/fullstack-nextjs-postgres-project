@@ -7,9 +7,9 @@ const NavbarComponent = () => {
   }, []);
   return (
     <nav>
-      <div>
+      <div className='flex justify-between'>
         <p>Logotyp🫠</p>
-        <div>
+        <div className='flex'>
           {isAuth === true ? <button>log out</button> : <button>log in</button>}
           <p>🍔</p>
         </div>

@@ -3,7 +3,7 @@ const {SECRET} = require('../constants')
 const jwt = require('jsonwebtoken')
 
 exports.getPosts = async (req, res) => {
-    await pool.query('SELECT * FROM posts', (error, posts) => {
+    await pool.query('SELECT posts.*, users.user_name FROM posts, users WHERE posts.user_id = users.user_id', (error, posts) => {
     if (error) {
       console.error('Database error:', error);
       res.status(500).json({ error: 'Internal Server Error' });

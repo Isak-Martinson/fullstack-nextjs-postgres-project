@@ -16,7 +16,7 @@ CREATE TABLE "posts" (
   "post_title" VARCHAR(300),
   "post_text" TEXT,
   "post_views" INT,
-  "post_date" DATE DEFAULT CURRENT_DATE,
+  "post_date" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT "FK_posts.user_id"
     FOREIGN KEY ("user_id")
       REFERENCES "users"("user_id")

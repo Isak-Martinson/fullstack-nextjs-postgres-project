@@ -8,8 +8,6 @@ import RegisterComponent from '@/components/register/RegisterComponent';
 import LoginComponent from '@/components/login/LoginComponent';
 import { UserListProps, PostsProps } from './types';
 
-import styles from './page.module.css';
-
 export default function Home() {
   const [users, setUsers] = useState<Array<UserListProps>>([]);
   const [posts, setPosts] = useState<Array<PostsProps>>([]);
@@ -30,12 +28,13 @@ export default function Home() {
       .then((data) => setPosts(data));
   }, []);
   return (
-    <main className={styles.main}>
+    <main className='flex flex-col items-center px-4 sm:px-10 md:px-40'>
+      <h1 className='text-6xl font-bold md:text-9xl'>brutalist</h1>
       <CreatePost />
       <PostsComponent postsData={posts} />
-      <UserList users={users} />
-      <RegisterComponent />
-      <LoginComponent />
+      {/* <UserList users={users} /> */}
+      {/* <RegisterComponent />
+      <LoginComponent /> */}
     </main>
   );
 }

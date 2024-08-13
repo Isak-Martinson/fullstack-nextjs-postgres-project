@@ -11,4 +11,5 @@ export interface PostsProps {
   post_title: String;
   post_text: String;
   post_date: String;
+  user_name: String;
 }

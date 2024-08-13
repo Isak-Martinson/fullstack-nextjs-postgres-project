@@ -1,10 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'TeXGyreHeros';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/public/fonts/texgyreheros-regular.otf') format('otf');
+  }
+}
+
 :root {
+  font-family: 'TeXGyreHeros', sans-serif;
+  background-color: #DCDCDC;
+  color: #191919;
+}
+
+/* :root {
+  font-family: 'TexGyreHeros-regular', sans-serif;
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -104,4 +121,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */

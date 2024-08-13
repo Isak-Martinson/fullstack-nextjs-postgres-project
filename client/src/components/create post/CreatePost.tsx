@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 
 const CreatePost = () => {
+  const [writeActive, setWriteActive] = useState(false);
   const [data, setData] = useState({
     post_title: '',
     post_text: '',
@@ -41,14 +42,39 @@ const CreatePost = () => {
   };
 
   return (
-    <section>
-      <form action='submit' onSubmit={handleSubmit}>
-        <label htmlFor='post_title'>Title</label>
-        <input onChange={handleChange} id='post_title' type='text' required />
-        <label htmlFor='post_text'>Body text</label>
-        <input onChange={handleChange} id='post_text' type='text' required />
-        <button>submit</button>
-      </form>
+    <section className='w-full'>
+      {!writeActive ? (
+        <div className='flex flex-col'>
+          <input
+            className='border-b-[1px] border-black bg-transparent mb-20 px-6 py-2'
+            type='text'
+            placeholder='write a post?'
+            onClick={() => {
+              setWriteActive(true);
+            }}
+          />
+        </div>
+      ) : (
+        <form className='flex flex-col' action='submit' onSubmit={handleSubmit}>
+          <label htmlFor='post_title'>Title</label>
+          <input
+            className='border-[1px] border-black'
+            onChange={handleChange}
+            id='post_title'
+            type='text'
+            required
+          />
+          <label htmlFor='post_text'>Body text</label>
+          <input
+            className='border-[1px] border-black'
+            onChange={handleChange}
+            id='post_text'
+            type='text'
+            required
+          />
+          <button className='bg-black text-white'>Create post</button>
+        </form>
+      )}
     </section>
   );
 };
