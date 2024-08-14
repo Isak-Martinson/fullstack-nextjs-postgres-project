@@ -40,6 +40,7 @@ const LoginComponent = () => {
         console.log('du är nu inloggad');
         localStorage.setItem('isAuth', 'true');
         console.log(response.data);
+        location.reload();
       } else {
         setError({
           ...error,

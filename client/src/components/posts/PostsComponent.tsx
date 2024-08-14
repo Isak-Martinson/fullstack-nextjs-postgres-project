@@ -40,21 +40,23 @@ const PostsComponent: React.FC<PostsComponentProps> = ({ postsData }) => {
 
   return (
     <section className='w-full'>
-      {postsData.map((post, index) => (
-        <div className='pb-4' key={index}>
-          <div className='px-6'>
-            <h2 className='text-2xl font-bold pb-2'>{post.post_title}</h2>
-            {/* <p className='pb-2'>{post.post_text}</p> */}
-            <div className='flex flex-row justify-between pb-2'>
-              <p>comments</p>
-              <p>
-                posted by: {post.user_name} {dateTransform(post.post_date)}
-              </p>
+      {postsData
+        .map((post, index) => (
+          <div className='pb-4' key={index}>
+            <div className='px-6'>
+              <h2 className='text-2xl font-bold pb-2'>{post.post_title}</h2>
+              {/* <p className='pb-2'>{post.post_text}</p> */}
+              <div className='flex flex-row justify-between pb-2'>
+                <p>comments</p>
+                <p>
+                  posted by: {post.user_name} {dateTransform(post.post_date)}
+                </p>
+              </div>
             </div>
+            <hr className='border-t-1px border-black' />
           </div>
-          <hr className='border-t-1px border-black' />
-        </div>
-      ))}
+        ))
+        .reverse()}
     </section>
   );
 };

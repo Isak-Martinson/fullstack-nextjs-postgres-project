@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Logout from '../logout/LogoutComponent';
 const NavbarComponent = () => {
   const [isAuth, setIsAuth] = useState<boolean | null>(null);
   useEffect(() => {
@@ -10,8 +11,13 @@ const NavbarComponent = () => {
       <div className='flex justify-between'>
         <p>Logotyp🫠</p>
         <div className='flex'>
-          {isAuth === true ? <button>log out</button> : <button>log in</button>}
+          {isAuth === true ? (
+            <button>sign out</button>
+          ) : (
+            <button>sign in</button>
+          )}
           <p>🍔</p>
+          <Logout />
         </div>
       </div>
     </nav>

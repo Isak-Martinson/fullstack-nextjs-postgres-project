@@ -29,12 +29,12 @@ export default function Home() {
   }, []);
   return (
     <main className='flex flex-col items-center px-4 sm:px-10 md:px-40'>
-      <h1 className='text-6xl font-bold md:text-9xl'>brutalist</h1>
+      <h1 className='text-6xl font-bold md:text-9xl'>brutalism</h1>
       <CreatePost />
       <PostsComponent postsData={posts} />
       {/* <UserList users={users} /> */}
-      {/* <RegisterComponent />
-      <LoginComponent /> */}
+      {/* <RegisterComponent /> */}
+      <LoginComponent />
     </main>
   );
 }
