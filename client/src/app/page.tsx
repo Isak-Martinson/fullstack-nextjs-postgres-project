@@ -1,11 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import CreatePost from '@/components/create post/CreatePost';
+import CreatePost from '@/components/create-post/CreatePost';
 import PostsComponent from '@/components/posts/PostsComponent';
 import UserList from '@/components/UserList/UserList';
 import RegisterComponent from '@/components/register/RegisterComponent';
-import LoginComponent from '@/components/login/LoginComponent';
 import { UserListProps, PostsProps } from './types';
 
 export default function Home() {
@@ -34,7 +33,6 @@ export default function Home() {
       <PostsComponent postsData={posts} />
       {/* <UserList users={users} /> */}
       {/* <RegisterComponent /> */}
-      <LoginComponent />
     </main>
   );
 }

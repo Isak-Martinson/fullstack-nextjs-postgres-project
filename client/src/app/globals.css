@@ -16,6 +16,19 @@
   font-family: 'TeXGyreHeros', sans-serif;
   background-color: #DCDCDC;
   color: #191919;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ProseMirror {
+  height: 100%;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.editor-button {
+  margin-right: 8px;
 }
 
 /* :root {

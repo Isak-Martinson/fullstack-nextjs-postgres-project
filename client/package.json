@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@remixicon/react": "^4.2.0",
+    "@tiptap/pm": "^2.6.3",
+    "@tiptap/react": "^2.6.3",
+    "@tiptap/starter-kit": "^2.6.3",
     "axios": "^1.6.5",
     "next": "14.0.4",
     "react": "^18",

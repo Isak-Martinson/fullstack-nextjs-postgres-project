@@ -1,7 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import axios from 'axios';
 
-const LoginComponent = () => {
+type LoginComponentProps = {
+  toggleFunction: () => void;
+};
+
+const LoginComponent: React.FC<LoginComponentProps> = ({ toggleFunction }) => {
   const [error, setError] = useState({
     isError: false,
     message: '',
@@ -54,10 +58,21 @@ const LoginComponent = () => {
   };
 
   return (
-    <section>
-      <form action='submit' onSubmit={handleSubmit}>
-        <label htmlFor=''>
+    <section className='flex flex-col w-screen h-screen absolute bg-[#D1D1D1] items-center justify-center bg-opacity-50 backdrop-blur-md'>
+      <form
+        className='flex flex-col items-center bg-red-500 bg-white rounded-lg'
+        action='submit'
+        onSubmit={handleSubmit}
+      >
+        <div className='w-full flex flex-row justify-end'>
+          <p onClick={toggleFunction} className='p-4'>
+            X
+          </p>
+        </div>
+
+        <label htmlFor='user_name'>
           <input
+            className='p-1 radius-10 border-[1.5px] border-black bg-transparent rounded-md mb-5 mx-10'
             onChange={handleChange}
             id='user_name'
             type='text'
@@ -65,8 +80,9 @@ const LoginComponent = () => {
             required
           />
         </label>
-        <label htmlFor='password'>
+        <label htmlFor='user_password'>
           <input
+            className='p-1 radius-10 border-[1.5px] border-black bg-transparent rounded-md mb-5'
             onChange={handleChange}
             id='user_password'
             type='password'
@@ -74,7 +90,9 @@ const LoginComponent = () => {
             required
           />
         </label>
-        <button>Logga in</button>
+        <button className='mb-10 px-2 py-1 bg-black text-white rounded-md'>
+          Logga in
+        </button>
       </form>
     </section>
   );
