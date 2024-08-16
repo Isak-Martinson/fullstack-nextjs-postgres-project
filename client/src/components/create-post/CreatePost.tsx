@@ -43,42 +43,57 @@ const CreatePost = () => {
   };
 
   return (
-    // <section className='w-full'>
-    //   {!writeActive ? (
-    //     <div className='flex flex-col'>
-    //       <input
-    //         className='border-b-[1px] border-black bg-transparent mb-20 px-6 py-2'
-    //         type='text'
-    //         placeholder='write a post?'
-    //         onClick={() => {
-    //           setWriteActive(true);
-    //         }}
-    //       />
-    //     </div>
-    //   ) : (
-    //     <form className='flex flex-col' action='submit' onSubmit={handleSubmit}>
-    //       <label htmlFor='post_title'>Title</label>
-    //       <input
-    //         className='border-[1px] border-black'
-    //         onChange={handleChange}
-    //         id='post_title'
-    //         type='text'
-    //         required
-    //       />
-    //       <label htmlFor='post_text'>Body text</label>
-    //       <input
-    //         className='border-[1px] border-black'
-    //         onChange={handleChange}
-    //         id='post_text'
-    //         type='text'
-    //         required
-    //       />
-    //       <button className='bg-black text-white'>Create post</button>
-    //     </form>
-    //   )}
-    // </section>
     <>
-      <RichTextEditor />
+      <section className='w-full'>
+        {!writeActive ? (
+          <div className='flex flex-col'>
+            <input
+              className='border-b-[1px] border-black bg-transparent mb-20 px-6 py-2'
+              type='text'
+              placeholder='write a post?'
+              onClick={() => {
+                setWriteActive(true);
+              }}
+            />
+          </div>
+        ) : (
+          // <form
+          //   className='flex flex-col'
+          //   action='submit'
+          //   onSubmit={handleSubmit}
+          // >
+          //   <label htmlFor='post_title'>Title</label>
+          //   <input
+          //     className='border-[1px] border-black'
+          //     onChange={handleChange}
+          //     id='post_title'
+          //     type='text'
+          //     required
+          //   />
+          //   <label htmlFor='post_text'>Body text</label>
+          //   <input
+          //     className='border-[1px] border-black'
+          //     onChange={handleChange}
+          //     id='post_text'
+          //     type='text'
+          //     required
+          //   />
+          //   <button className='bg-black text-white'>Create post</button>
+          // </form>
+          <form>
+            <label htmlFor='post_title'>Title</label>
+            <input
+              className='border-[1px] border-black w-full mb-4 p-2 bg-transparent'
+              onChange={handleChange}
+              placeholder='title'
+              id='post_title'
+              type='text'
+              required
+            />
+            <RichTextEditor />
+          </form>
+        )}
+      </section>
     </>
   );
 };

@@ -1,12 +1,19 @@
 'use client';
 import { useEditor, EditorContent } from '@tiptap/react';
+import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit';
 import EditorToolbar from './EditorToolbar';
 
 const RichTextEditor = () => {
   const editor = useEditor({
-    extensions: [StarterKit],
-    content: '<p>Hello World! 🌎️</p>',
+    extensions: [
+      StarterKit.configure({ heading: { levels: [2] } }),
+      Placeholder.configure({
+        placeholder: 'write something...',
+      }),
+    ],
+    content: '<p></p>',
+    injectCSS: false,
   });
 
   return (
