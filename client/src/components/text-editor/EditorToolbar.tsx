@@ -5,7 +5,7 @@ import {
   RiItalic,
   RiHeading,
   RiCodeBlock,
-  RiDoubleQuotesL,
+  RiDoubleQuotesR,
   RiListUnordered,
 } from '@remixicon/react';
 
@@ -89,7 +89,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
             : 'editor-button'
         }
       >
-        <RiDoubleQuotesL />
+        <RiDoubleQuotesR />
       </button>
       <button
         onClick={() =>
@@ -123,6 +123,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
       >
         <RiCodeBlock />
       </button>
+      <button>post</button>
     </div>
   );
 };

@@ -38,13 +38,21 @@ const PostsComponent: React.FC<PostsComponentProps> = ({ postsData }) => {
     }
   };
 
+  const postLink = (event: any) => {
+    console.log(event);
+  };
+
   return (
     <section className='w-full'>
       {postsData
         .map((post, index) => (
-          <div className='pb-4' key={index}>
+          <div
+            className='pb-4'
+            key={index}
+            onClick={() => postLink(post.post_id)}
+          >
             <div className='px-6'>
-              <h2 className='text-2xl font-bold pb-2'>{post.post_title}</h2>
+              <h2 className='text-2xl font-bold pb-2'>{post.post_title} </h2>
               {/* <p className='pb-2'>{post.post_text}</p> */}
               <div className='flex flex-row justify-between pb-2'>
                 <p>comments</p>

@@ -15,11 +15,21 @@ const CreatePost = () => {
     console.log('testing testing osv', x);
   }, []);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
+    console.log(value);
     setData({
       ...data,
       [event.target.id]: value,
+    });
+  };
+
+  const handleChangePostText = (event: ChangeEvent<HTMLDivElement>) => {
+    const value = event.target.innerHTML;
+    console.log(value);
+    setData({
+      ...data,
+      post_text: value,
     });
   };
 
@@ -57,40 +67,19 @@ const CreatePost = () => {
             />
           </div>
         ) : (
-          // <form
-          //   className='flex flex-col'
-          //   action='submit'
-          //   onSubmit={handleSubmit}
-          // >
-          //   <label htmlFor='post_title'>Title</label>
-          //   <input
-          //     className='border-[1px] border-black'
-          //     onChange={handleChange}
-          //     id='post_title'
-          //     type='text'
-          //     required
-          //   />
-          //   <label htmlFor='post_text'>Body text</label>
-          //   <input
-          //     className='border-[1px] border-black'
-          //     onChange={handleChange}
-          //     id='post_text'
-          //     type='text'
-          //     required
-          //   />
-          //   <button className='bg-black text-white'>Create post</button>
-          // </form>
-          <form>
-            <label htmlFor='post_title'>Title</label>
+          <form onSubmit={handleSubmit}>
             <input
               className='border-[1px] border-black w-full mb-4 p-2 bg-transparent'
-              onChange={handleChange}
+              onInput={handleChangeTitle}
               placeholder='title'
               id='post_title'
               type='text'
               required
             />
-            <RichTextEditor />
+            <RichTextEditor handleChange={handleChangePostText} />
+            <button className='bg-[#191919] py-2 px-4 rounded-md text-white'>
+              post
+            </button>
           </form>
         )}
       </section>
