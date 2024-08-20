@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PostsProps, UserListProps } from '@/app/types';
+import Link from 'next/link';
 
 interface PostsComponentProps {
   postsData: PostsProps[];
@@ -46,23 +47,21 @@ const PostsComponent: React.FC<PostsComponentProps> = ({ postsData }) => {
     <section className='w-full'>
       {postsData
         .map((post, index) => (
-          <div
-            className='pb-4'
-            key={index}
-            onClick={() => postLink(post.post_id)}
-          >
-            <div className='px-6'>
-              <h2 className='text-2xl font-bold pb-2'>{post.post_title} </h2>
-              {/* <p className='pb-2'>{post.post_text}</p> */}
-              <div className='flex flex-row justify-between pb-2'>
-                <p>comments</p>
-                <p>
-                  posted by: {post.user_name} {dateTransform(post.post_date)}
-                </p>
+          <Link key={index} href={'post/' + post.post_id.toString()}>
+            <div className='pb-4' onClick={() => postLink(post.post_id)}>
+              <div className='px-6'>
+                <h2 className='text-2xl font-bold pb-2'>{post.post_title} </h2>
+                {/* <p className='pb-2'>{post.post_text}</p> */}
+                <div className='flex flex-row justify-between pb-2'>
+                  <p>comments</p>
+                  <p>
+                    posted by: {post.user_name} {dateTransform(post.post_date)}
+                  </p>
+                </div>
               </div>
+              <hr className='border-t-1px border-black' />
             </div>
-            <hr className='border-t-1px border-black' />
-          </div>
+          </Link>
         ))
         .reverse()}
     </section>

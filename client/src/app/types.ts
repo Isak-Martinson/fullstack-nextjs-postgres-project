@@ -13,3 +13,11 @@ export interface PostsProps {
   post_date: String;
   user_name: String;
 }
+
+export interface PostByIdProps {
+  post_id: Number;
+  user_id: Number;
+  post_title: String;
+  post_text: String;
+  post_date: String;
+}
