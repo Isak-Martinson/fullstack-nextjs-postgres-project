@@ -11,6 +11,7 @@ interface TestProps {
 
 const RichTextEditor: React.FC<TestProps> = ({ handleChange }) => {
   const [postText, setPostText] = useState<string>('');
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: { levels: [2] } }),

@@ -21,6 +21,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
   return (
     <div className='flex flex-row w-full'>
       <button
+        type='button'
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={
           editor.isActive('heading') ||
@@ -34,6 +35,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
         <RiBold />
       </button>
       <button
+        type='button'
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={
           editor.isActive('heading') ||
@@ -49,6 +51,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
         <RiItalic />
       </button>
       <button
+        type='button'
         onClick={() =>
           editor
             .chain()
@@ -72,6 +75,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
         <RiHeading />
       </button>
       <button
+        type='button'
         onClick={() => {
           if (editor.isActive('blockquote')) {
             editor.chain().focus().setParagraph().run();
@@ -92,6 +96,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
         <RiDoubleQuotesR />
       </button>
       <button
+        type='button'
         onClick={() =>
           editor
             .chain()
@@ -111,6 +116,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = ({ editor }) => {
         <RiListUnordered />
       </button>
       <button
+        type='button'
         onClick={() =>
           editor.chain().focus().unsetBlockquote().toggleCodeBlock().run()
         }
