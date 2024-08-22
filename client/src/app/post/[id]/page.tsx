@@ -17,9 +17,11 @@ export default function Home() {
       .then((data) => setPostData(data));
   }, []);
   return (
-    <main className='flex flex-col items-center px-4 sm:px-10 md:px-40'>
+    <main className='flex flex-col items-center px-4'>
       <h1 className='text-6xl font-bold md:text-9xl'>b</h1>
-      <PostComponent postData={postData} />
+      <section className='text-section'>
+        <PostComponent postData={postData} />
+      </section>
     </main>
   );
 }

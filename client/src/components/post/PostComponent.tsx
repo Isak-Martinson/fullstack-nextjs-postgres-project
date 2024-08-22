@@ -10,10 +10,10 @@ const PostComponent: React.FC<PostByIdComponentInterface> = ({ postData }) => {
     <>
       {postData.map((post, index) => {
         return (
-          <div
-            key={index}
-            dangerouslySetInnerHTML={{ __html: post.post_text }}
-          ></div>
+          <div key={index}>
+            <h1 className='font-bold text-6xl mb-[48px]'>{post.post_title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.post_text }}></div>
+          </div>
         );
       })}
     </>

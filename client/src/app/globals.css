@@ -75,6 +75,11 @@ code {
   height: 0;
   pointer-events: none;
 }
+
+.text-section {
+  max-width: 620px;
+  text-wrap: pretty;
+}
 /* :root {
   font-family: 'TexGyreHeros-regular', sans-serif;
   --max-width: 1100px;

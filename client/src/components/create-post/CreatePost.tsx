@@ -69,7 +69,7 @@ const CreatePost = () => {
         ) : (
           <form onSubmit={handleSubmit}>
             <input
-              className='border-[1px] border-black w-full mb-4 p-2 bg-transparent'
+              className='border-[1px] border-black w-full mb-4 p-2 bg-transparent rounded-md'
               onInput={handleChangeTitle}
               placeholder='title'
               id='post_title'

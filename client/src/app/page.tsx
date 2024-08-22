@@ -27,8 +27,8 @@ export default function Home() {
       .then((data) => setPosts(data));
   }, []);
   return (
-    <main className='flex flex-col items-center px-4 sm:px-10 md:px-40'>
-      <h1 className='text-6xl font-bold md:text-9xl'>brutalism</h1>
+    <main className='flex flex-col items-center my-8 px-4 sm:px-10 md:px-40'>
+      <h1 className='text-6xl font-bold md:text-9xl'>brutalist</h1>
       <CreatePost />
       <PostsComponent postsData={posts} />
       {/* <UserList users={users} /> */}
